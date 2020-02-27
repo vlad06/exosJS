@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<title>exercice JavaScript 7</title>
+	<meta charset="UTF-8" />
+</head>
+<body>
+	<div id="container">
+		<h2>Saisissez une adresse e-mail valide puis pressez le bouton 'Contrôle'</h2>
+		<input type="text" id="mailToControl" name="mailToControl" value="" />
+		<span id="spanInfo"></span>
+		<p>
+			<ul>
+				<li>
+					<input type="radio" name="choixMethode" id="regExChoice" checked/>
+					<label for="radio1">Contrôle avec des regex</label>
+				</li>
+				<li>
+					<input type="radio" name="choixMethode" id="jsControlChoice" />
+					<label for="radio2">Contrôle avec des fonctions javascript</label>
+				</li>
+				<li>
+					<button type="button" id="controler" name="controle" >Contrôler</button>
+				</li>
+		</p>
+	</div>
+</body>
+<style>
+	ul {
+		list-style: none;
+		}
+</style>
+<script src="exerciceJS_7bis.js"></script>
+</html>
