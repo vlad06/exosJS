@@ -25,13 +25,6 @@ function nbStats(e) {
 	}
 }
 
-function afficheMsg(message, importance) {
-	var zoneAffichage = document.getElementById("zoneAffichage");
-	zoneAffichage.style.fontSize = "2em";
-	(importance) ? zoneAffichage.style.color = "blue" : zoneAffichage.style.color = "red";
-	zoneAffichage.innerHTML = message;
-}
-
 function majAffichage(bool) {
 	var zoneAffNb = document.getElementById("zoneAffichageNombres");
 	var zoneAffStat = document.getElementById("affichageStatistiques");
@@ -60,8 +53,9 @@ function majAffichage(bool) {
 }
 
 function deleteLast() {
-	nbTab.pop();
+	var tst = nbTab.pop();
 	console.log(nbTab);
+	console.log(tst);
 	if(nbTab.length) {
 		majAffichage(true);
 	} else {
