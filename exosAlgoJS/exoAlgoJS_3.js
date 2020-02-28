@@ -1,56 +1,62 @@
-(function() {
-	document.getElementById("lol").focus();
-	document.getElementById("lol").style.position = "absolute";
-	document.getElementById("lol").style.left = "-9000px";
-	document.getElementById("lol").addEventListener('keypress', afficheTable);
-	
-}());
-var numTable = 1;
-var divAffichage = document.getElementById("affichage");
+var strTableToShow = "";
+// var numTable = 1;
+var ancrage = document.getElementById("lel");
+// var ancrage = document.getElementById("ancrageKeypress");
+// var olol = document.getElementById("lol");
+var thePause;
 
-function afficheTable(e) {
-	if(numTable=1) {
-		divAffichage.innerHTML = 1;
-		numTable++;
+
+(function() {
+	ancrage.addEventListener('keypress', pauseShowMultiplicationTable);
+	ancrage.numTable = 1;
+	printHtml(constructTable(ancrage.numTable));
+	// printHtml("...on respire... frappez espace et validez");
+	// ancrage.style.position = "absolute";
+	// ancrage.style.left = "9000px";
+	ancrage.focus();
+}());
+
+function startShowMultiplicationTable() {
+	console.log("dans start");
+	ancrage.removeEventListener('keydown', startShowMultiplicationTable);
+	ancrage.addEventListener('keydown',pauseShowMultiplicationTable);
+	// clearInterval(thePause);
+	ancrage.numTable++;
+	printHtml(constructTable(ancrage.numTable)); 
+}
+
+function pauseShowMultiplicationTable(e) {
+	console.log("dans pause");
+	// printHtml(constructTable(ancrage.numTable));
+	// thePause = 
+		// setInterval(
+			// function() { 
+				// console.log("coucou"); 
+			// }, 60000
+		// );
+	// printHtml("...on respire... frappez espace et validez");
+	if(e.keyCode == 32) {
+		ancrage.removeEventListener('keydown', pauseShowMultiplicationTable);
+		ancrage.addEventListener('keydown',startShowMultiplicationTable);
 	}
-	console.log("dans afficheTable");
-	document.getElementById("lol").focus();
-	console.log(e);
-	// var b = document.body;
-	// var para = document.createElement("P");
-	// para.innerHTML = "This is a paragraph";
-	// document.getElementById("affichage").appendChild(para);
-		// for(i=1;i<=10;i++) {
-		// document.write("<div id='table" + i + "'> Table des " + i + "<br>");
-		// for(i=1;i<=10;i++) {
-			// document.write(numTable + " x " + i + " = " + (numTable * i)+"<br>");
-		// }
-		divAffichage.innerHTML = numTable;
-		// "<br>Appuyer sur espace pour continuer...<br>";
-		console.log(e);
-		if(e.charCode == 32) {
-			document.getElementById("lol").value = "";
-			afficheTable();
-			console.log("coucou");
-		}
+}
+
+function printHtml(message) {
+	console.log("dans printHtml");
+	var divAffichage = document.getElementById("divAffichage");
+	// var theBr = document.createElement("br");
+	// var theBr = document.createTextNode("<br />");
+	// divAffichage.append(message);
+	divAffichage.insertAdjacentHTML('beforeend', message);
+	console.log(divAffichage.textContent);
+}
+
+function constructTable(numTable) {
+	console.log("dans constructTable");
+	var maTable = "Table des " + numTable + "<br />";
+	for(var i=1;i<=10;i++) {
+		maTable = maTable + numTable + " x " + i + " = " + (numTable * i) + "<br />";
 	}
-	
-	// var newDiv = document.createElement('div');
-	// var newH1 = document.createElement('h1');
-	// var txt;
-	// newDiv.textContent = b.append(document.createTextNode(
-		// newH1.textContent = "Tables de multiplication"));
-		// newDiv.inserHTML = "This is a test";
-		// document.getElementById("affichage").appendChild(newDiv);
-	// for(i=1;i<=10;i++) {
-		// document.write("<div id='table" + i + "'> Table des " + i + "<br>");
-		// for(i=1;i<=10;i++) {
-			// document.write(numTable + " x " + i + " = " + (numTable * i)+"<br>");
-		// }
-		// document.getElementById("lol").focus();
-		// document.write("<br>Appuyer sur espace pour continuer...<br>");
-		// while(e.charCode != 32) {
-			// console.log("coucou");
-		// }
-	// }
-// }
+	maTable += "...on respire... frappez espace et validez<br />";
+	return maTable;
+}

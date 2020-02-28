@@ -5,7 +5,8 @@
 	document.getElementById("nb").focus();
 }());
 var zoneNb = document.getElementById("nb");// zoneNb est le raccourci pour la textbox
-var nbTab = new Array(); //on déclare un tableau
+v
+ar nbTab = new Array(); //on déclare un tableau
 
 //fonction déclenchée par keypress, dès qu'on appuie sur une touche, 
 //cette fonction est appelée
@@ -31,21 +32,16 @@ function nbStats(e) { //e contient des informations sur l'évenement déclencheu
 function majAffichage() {
 	var zoneAffNb = document.getElementById("zoneAffichageNombres");
 	var zoneAffStat = document.getElementById("affichageStatistiques");
-	// var somme = nbTab.reduce(
-		// function(accumulateur, valeurCourante, index, array) {
-			// return accumulateur + valeurCourante;
-		// }
-	// );
 
-	if(nbTab.length) {
+	if(nbTab.length) { //si la taille de la table est > 0
 		zoneAffNb.style.fontSize = "1.5em";
-		zoneAffNb.innerText = nbTab;
+		zoneAffNb.innerText = nbTab;	//on affiche la table
 		var compteur = nbTab.length;
-		var somme = nbTab.reduce((accumulateur, valeurCourante) => 
+		var somme = nbTab.reduce((accumulateur, valeurCourante) => //pour faire la somme de tous les éléments
 			parseFloat(accumulateur) + parseFloat(valeurCourante));
-		var mini = Math.min(...nbTab);
-		var maxi = Math.max(...nbTab);
-		zoneAffStat.innerHTML = 
+		var mini = Math.min(...nbTab); //minimum de la table (...nbTab est un opérateur de décomposition)
+		var maxi = Math.max(...nbTab);//maximum de la table
+		zoneAffStat.innerHTML = //on affiche les statistiques
 		"Compteur : " + compteur + "<br />" + 
 		"Compris entre " + mini + " et " + maxi + "<br />" +
 		"Pour une somme de " + somme + "<br />" +
@@ -56,17 +52,15 @@ function majAffichage() {
 }
 
 function deleteLast() {
-	var tst = nbTab.pop();
-	// console.log(nbTab);
-	// console.log(tst);
-	majAffichage();
+	nbTab.pop(); //on enlève le dernier élément de la table
+	majAffichage(); //on met à jour l'affichage sur la page html
 }
 
 function deleteAll() {
-	while(nbTab.length) {
-		nbTab.pop();
+	while(nbTab.length) {	//tant que la taille de la table > 0
+		nbTab.pop();	//on enlève le dernier élément
 	}
-	majAffichage();
+	majAffichage();	//on met à jour l'affichage sur la page html
 }
 
 
