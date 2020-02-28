@@ -1,65 +1,72 @@
 (function() {
 	document.getElementById("nb").addEventListener('keypress', nbStats);
-	document.getElementById("btnSupprimer").addEventListener('click', deleteLast);
+	document.getElementById("btnDelete").addEventListener('click', deleteLast);
+	document.getElementById("btnDeleteAll").addEventListener('click', deleteAll);
 	document.getElementById("nb").focus();
 }());
-var zoneNb = document.getElementById("nb");
-var nbTab = new Array();
+var zoneNb = document.getElementById("nb");// zoneNb est le raccourci pour la textbox
+var nbTab = new Array(); //on déclare un tableau
 
-function nbStats(e) {
+//fonction déclenchée par keypress, dès qu'on appuie sur une touche, 
+//cette fonction est appelée
+function nbStats(e) { //e contient des informations sur l'évenement déclencheur
 	var nb;
-	var isNumber;
-	// console.log(e.charCode);
-	if(e.charCode == 13) {
-		nb = zoneNb.value;
+	var isNumber; //un booléen pour savoir si nb est un nombre ou pas
+	if(e.charCode == 13) { //13 est le charCode pour la touche entrée
+		nb = zoneNb.value;	//on récupère le nb saisi par l'utilisateur
+		//on test si la saisie est un nombre.
 		(Number.isNaN(Number.parseFloat(nb))) ?	isNumber = false : isNumber = true;
-		// console.log(nb);
-		// console.log(isNumber);
-		if(isNumber) {
-			nb=nb.trim();
-			nbTab.push(nb);
-			console.log(nbTab);
-			zoneNb.value="";
-			majAffichage(true);
+		
+		if(isNumber) { //si c'est un nombre
+			nb=nb.trim();//on supprime les potentiels espaces
+			nb=" "+nb; //et puis on en rajoute un devant quand même pour une meilleure visibilité
+			nbTab.push(nb);//on ajoute le nombre au tableau
+			// console.log(nbTab); 
+			zoneNb.value="";// on remet à zéro la textbox
+			majAffichage(); //on appelle la fonction de mise à jour de l'affichage
 		}
 	}
 }
 
-function majAffichage(bool) {
+function majAffichage() {
 	var zoneAffNb = document.getElementById("zoneAffichageNombres");
 	var zoneAffStat = document.getElementById("affichageStatistiques");
-	console.log(bool);
-	var somme = !bool ? "Aucun nombre" : 
-		nbTab.reduce((accumulateur, valeurCourante) => parseFloat(accumulateur) + parseFloat(valeurCourante));
-	var compteur = (nbTab.length == 0) ? "Aucun nombre" : nbTab.length;
-	var mini = Math.min(...nbTab);
-	var maxi = Math.max(...nbTab);
 	// var somme = nbTab.reduce(
 		// function(accumulateur, valeurCourante, index, array) {
 			// return accumulateur + valeurCourante;
 		// }
 	// );
-	zoneAffNb.style.fontSize = "1.5em";
-	zoneAffNb.innerText = nbTab;
-	if(bool) {
+
+	if(nbTab.length) {
+		zoneAffNb.style.fontSize = "1.5em";
+		zoneAffNb.innerText = nbTab;
+		var compteur = nbTab.length;
+		var somme = nbTab.reduce((accumulateur, valeurCourante) => 
+			parseFloat(accumulateur) + parseFloat(valeurCourante));
+		var mini = Math.min(...nbTab);
+		var maxi = Math.max(...nbTab);
 		zoneAffStat.innerHTML = 
 		"Compteur : " + compteur + "<br />" + 
 		"Compris entre " + mini + " et " + maxi + "<br />" +
 		"Pour une somme de " + somme + "<br />" +
 		"Et une moyenne de " + (somme / compteur);
 	} else {
-		zoneAffStat.innerHTML = "Aucun nombre n'a été saisi.";
+		zoneAffNb.innerHTML = zoneAffStat.innerHTML = "Aucun nombre n'a été saisi.";
 	}
 }
 
 function deleteLast() {
 	var tst = nbTab.pop();
-	console.log(nbTab);
-	console.log(tst);
-	if(nbTab.length) {
-		majAffichage(true);
-	} else {
-		majAffichage(false);
-	}
+	// console.log(nbTab);
+	// console.log(tst);
+	majAffichage();
 }
+
+function deleteAll() {
+	while(nbTab.length) {
+		nbTab.pop();
+	}
+	majAffichage();
+}
+
 
