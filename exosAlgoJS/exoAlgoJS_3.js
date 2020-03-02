@@ -1,8 +1,5 @@
 var strTableToShow = "";
-// var numTable = 1;
-var ancrage = document.getElementById("lel");
-// var ancrage = document.getElementById("ancrageKeypress");
-// var olol = document.getElementById("lol");
+var ancrage = document.getElementById("onTheBody");
 var thePause;
 
 
@@ -10,9 +7,6 @@ var thePause;
 	ancrage.addEventListener('keypress', pauseShowMultiplicationTable);
 	ancrage.numTable = 1;
 	printHtml(constructTable(ancrage.numTable));
-	// printHtml("...on respire... frappez espace et validez");
-	// ancrage.style.position = "absolute";
-	// ancrage.style.left = "9000px";
 	ancrage.focus();
 }());
 
@@ -20,37 +14,28 @@ function startShowMultiplicationTable() {
 	console.log("dans start");
 	ancrage.removeEventListener('keydown', startShowMultiplicationTable);
 	ancrage.addEventListener('keydown',pauseShowMultiplicationTable);
-	// clearInterval(thePause);
 	ancrage.numTable++;
 	printHtml(constructTable(ancrage.numTable)); 
 }
 
 function pauseShowMultiplicationTable(e) {
 	console.log("dans pause");
-	// printHtml(constructTable(ancrage.numTable));
-	// thePause = 
-		// setInterval(
-			// function() { 
-				// console.log("coucou"); 
-			// }, 60000
-		// );
-	// printHtml("...on respire... frappez espace et validez");
 	if(e.keyCode == 32) {
 		ancrage.removeEventListener('keydown', pauseShowMultiplicationTable);
 		ancrage.addEventListener('keydown',startShowMultiplicationTable);
 	}
 }
-
+//la fonction printHtml(string s) affiche dans une div une chaîne de caractères 
+//passée en paramètre.
 function printHtml(message) {
 	console.log("dans printHtml");
 	var divAffichage = document.getElementById("divAffichage");
-	// var theBr = document.createElement("br");
-	// var theBr = document.createTextNode("<br />");
-	// divAffichage.append(message);
 	divAffichage.insertAdjacentHTML('beforeend', message);
 	console.log(divAffichage.textContent);
 }
 
+//la fonction constructTable(int x) construit et retourne une chaîne de caractères correspondant 
+//à la table de multiplication des x
 function constructTable(numTable) {
 	console.log("dans constructTable");
 	var maTable = "Table des " + numTable + "<br />";

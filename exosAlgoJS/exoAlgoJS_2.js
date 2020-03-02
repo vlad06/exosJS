@@ -1,3 +1,4 @@
+
 (function() {
 	document.getElementById("nb").addEventListener('keypress', nbStats);
 	document.getElementById("btnDelete").addEventListener('click', deleteLast);
@@ -5,14 +6,14 @@
 	document.getElementById("nb").focus();
 }());
 var zoneNb = document.getElementById("nb");// zoneNb est le raccourci pour la textbox
-v
-ar nbTab = new Array(); //on déclare un tableau
+var nbTab = new Array(); //on déclare un tableau
 
 //fonction déclenchée par keypress, dès qu'on appuie sur une touche, 
 //cette fonction est appelée
 function nbStats(e) { //e contient des informations sur l'évenement déclencheur
 	var nb;
 	var isNumber; //un booléen pour savoir si nb est un nombre ou pas
+	console.log(e.charCode);
 	if(e.charCode == 13) { //13 est le charCode pour la touche entrée
 		nb = zoneNb.value;	//on récupère le nb saisi par l'utilisateur
 		//on test si la saisie est un nombre.
