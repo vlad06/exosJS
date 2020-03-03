@@ -166,7 +166,7 @@ function draw() {
 	ctx.fillRect(750, 50, 10, 150);
 	ctx.arc(754, 240, 40, 0, 2 * Math.PI, true);
 	ctx.moveTo(780, 260);
-	ctx.arc(754, 240, 30, 0, Math.PI*.8);
+	ctx.arc(780, 240, 30, 0, Math.PI*.8);
 	ctx.stroke();
 	
 	
