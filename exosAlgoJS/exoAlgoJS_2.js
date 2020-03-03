@@ -1,12 +1,12 @@
+var zoneNb = document.getElementById("nb");// zoneNb est le raccourci pour la textbox
+var nbTab = new Array(); //on déclare un tableau
 
 (function() {
-	document.getElementById("nb").addEventListener('keypress', nbStats);
+	zoneNb.addEventListener('keypress', nbStats);
 	document.getElementById("btnDelete").addEventListener('click', deleteLast);
 	document.getElementById("btnDeleteAll").addEventListener('click', deleteAll);
 	document.getElementById("nb").focus();
 }());
-var zoneNb = document.getElementById("nb");// zoneNb est le raccourci pour la textbox
-var nbTab = new Array(); //on déclare un tableau
 
 //fonction déclenchée par keypress, dès qu'on appuie sur une touche, 
 //cette fonction est appelée
