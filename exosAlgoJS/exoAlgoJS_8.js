@@ -1,4 +1,3 @@
-var strLettresSaisies = "";
 var gagne = false;
 var nbEssais = 0;
 var nbBonnesLettres = 0;
@@ -34,7 +33,6 @@ function go(event) {
 		for(var i = 0; i < motCache.length; i++) {
 			motEtoile += "*";
 		}
-		// nbTentatives = 2 * motCache.length;
 		saisieMotCache.style.visibility = "hidden";
 		afficheNombreTentatives.style.fontSize = "1.5em";
 		afficheNombreTentatives.innerHTML = "Vous avez droit à " + nbTentatives + " essais.";
@@ -49,12 +47,10 @@ function go(event) {
 
 function traitementVictime(event) {
 	lettreSaisie = txtVictime.value;
-	if(lettreSaisie.length > 1) {
-		alert("Merci de ne saisir qu'une seule lettre à la fois !!");
+	if(lettreSaisie.length > 1 || lettreSaisie.length == 0) {
+		alert("Merci de saisir au moins une lettre et une seule lettre à la fois !!");
 	} else {
-		strLettresSaisies += lettreSaisie + " / ";
 		traitement();
-		// zoneAffichage.innerHTML = strLettresSaisies;
 		txtVictime.value = "";
 		
 	}
@@ -81,9 +77,11 @@ function traitement() {
 		nbTentatives--;
 		afficheNombreTentatives.innerHTML = "Vous avez droit à " + nbTentatives + " essais.";
 		nbEssais++;
+		draw(nbTentatives);
 		zoneAffichage.innerHTML = "Dommage... continuez quand même.";
 	}
 	if(!nbTentatives) {
+		draw(nbTentatives);
 		defaite();
 	}
 	if(motEtoile == motCache) {
@@ -112,70 +110,113 @@ function initialisation() {
 	
 }
 
-function draw() {
+function draw(nbTentatives) {
 	var canvas = document.getElementById("dessinPendu");
 	var ctx = canvas.getContext("2d");
-	// switch() {
-		// case 1:
-			// ctx.fillRect(200, 630, 300, 20);
-		// break;
-		// case 2:
-			// ctx.fillRect(330, 10, 40, 600);
-		// break;
-		// case 3:
-			//ctx.fillRect(370, 10, 400, 40);
-		// break;
-		// case 4:
-			// ctx.save();
-			// ctx.translate(330, 150);
-			// ctx.rotate(Math.PI/180*-45);
-			// ctx.fillRect(0, 0, 190, 40);
-			// ctx.restore();
-		// break;
-		// case 5:
-			// ctx.fillRect(750, 50, 10, 150);
-		// break;
-		// case 6:
-		
-		// break;
-		// case 7:
-		
-		// break;
-		// case 8:
-		
-		// break;
-		// case 9:
-		
-		// break;
-		// case 10:
-		
-		// break;
-		// default:
-		// break;
-	// }
+	// ctx.fillStyle = 'black';
+	ctx.fillStyle = "maroon";
+	switch(nbTentatives) {
+		case 9:
+			ctx.fillRect(200, 610, 300, 40);
+		break;
+		case 8:
+			ctx.fillRect(330, 10, 40, 600);
+		break;
+		case 7:
+			ctx.fillRect(370, 10, 400, 40);
+		break;
+		case 6:
+			ctx.save();
+			ctx.translate(330, 150);
+			ctx.rotate(Math.PI / 180 * -45);
+			ctx.fillRect(0, 0, 190, 40);
+			ctx.restore();
+		break;
+		case 5:
+			ctx.fillRect(750, 50, 10, 150);
+		break;
+		case 4:
+			ctx.arc(754, 240, 40, 0, 2 * Math.PI, true);
+			ctx.stroke();
+		break;
+		case 3:
+			ctx.fillRect(751, 280, 5, 100);
+		break;
+		case 2:
+			ctx.fillRect(698, 303, 110, 5);
+		break;
+		case 1:
+			ctx.save();
+			ctx.translate(708, 421);
+			ctx.rotate(Math.PI / 180 * -45);
+			ctx.fillRect(0, 0, 62, 5);
+			ctx.restore();
+		break;
+		case 0:
+			ctx.save();
+			ctx.translate(755, 378);
+			ctx.rotate(Math.PI / 180 * 45);
+			ctx.fillRect(0, 0, 62, 5);
+			ctx.restore();
+			//Tout ce qui suit sert pour colorer le bonhomme lors de la défaite
+			//on dessine la bouche
+			ctx.save();
+			ctx.fillStyle = "red";	
+			ctx.translate(743, 257);
+			ctx.fillRect(0, 0, 20, 3);
+			ctx.restore();
+			//on dessine l'oeil droit
+			ctx.save();
+			ctx.fillStyle = "red";
+			ctx.translate(732,220);
+			ctx.rotate(Math.PI/180*45);
+			ctx.fillRect(0, 0, 15, 3);
+			ctx.restore();
+			ctx.save();
+			ctx.fillStyle = "red";
+			ctx.translate(730, 231);
+			ctx.rotate(Math.PI/180*-45);
+			ctx.fillRect(0, 0, 15, 3);
+			ctx.restore();
+			//on dessine l'oeil gauche
+			ctx.save()
+			ctx.fillStyle = "red";
+			ctx.translate(767, 220);
+			ctx.rotate(Math.PI/180*45);
+			ctx.fillRect(0, 0, 15, 3);
+			ctx.restore();
+			ctx.save();
+			ctx.fillStyle = "red";
+			ctx.translate(765, 231);
+			ctx.rotate(Math.PI/180*-45);
+			ctx.fillRect(0, 0, 15, 3);
+			ctx.restore();
+			//on redessine le bonhomme en bleu
+			ctx.fillStyle = "blue";
+			ctx.strokeStyle = "blue";	
+			ctx.arc(754, 240, 40, 0, 2 * Math.PI, true);
+			ctx.stroke();
+			ctx.fillRect(751, 280, 5, 100);
+			ctx.fillRect(698,303, 110, 5);
+			ctx.save();
+			ctx.translate(708, 421);
+			ctx.rotate(Math.PI/180*-45);
+			ctx.fillRect(0, 0, 62, 5);
+			ctx.restore();
+			ctx.save();
+			ctx.translate(755, 378);
+			ctx.rotate(Math.PI/180*45);
+			ctx.fillRect(0, 0, 62, 5);
+			ctx.restore();
+		break;
 
-	ctx.fillStyle = 'black';
-	ctx.fillRect(200, 610, 300, 40);
-	ctx.fillRect(330, 10, 40, 600);
-	ctx.fillRect(370, 10, 400, 40);
-	ctx.save();
-	ctx.translate(330, 150);
-	ctx.rotate(Math.PI/180*-45);
-	ctx.fillRect(0, 0, 190, 40);
-	ctx.restore();
-	ctx.fillRect(750, 50, 10, 150);
-	ctx.arc(754, 240, 40, 0, 2 * Math.PI, true);
-	ctx.moveTo(780, 260);
-	ctx.arc(780, 240, 30, 0, Math.PI*.8);
-	ctx.stroke();
-	
-	
+	}
 	
 	canvas.addEventListener(
 	'click', 
 		function(evt) {
 			var mousePos = getMousePos(canvas, evt);
-			var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+			var message = 'Mouse position: ' + Number.parseInt(mousePos.x) + ',' + Number.parseInt(mousePos.y);
 			writeMessage(canvas, message);
 		}, false
 	);
@@ -183,7 +224,7 @@ function draw() {
 
 function writeMessage(canvas, message) {
 	var context = canvas.getContext('2d');
-	// context.clearRect(0, 0, canvas.width, canvas.height);
+	context.clearRect(0, 0, 260, 30);
 	context.font = '18pt Calibri';
 	context.fillStyle = 'black';
 	context.fillText(message, 10, 25);
