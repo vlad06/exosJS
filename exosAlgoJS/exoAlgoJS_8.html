@@ -6,22 +6,27 @@
 </head>
 <body>
     <h1 align="center">Jeu du pendu</h1>
-		<h2 align="center"><span id="numJoueurBourreau">Joueur 1</span> est le bourreau</h2>
-		<div align="center" id="saisieMotCache">
-			<b>Saisissez un mot à deviner : </b>
-			<input type="text" id="txtBourreau" name="txtBourreau" size="30"/>
-			<button type="button" id="btnBourreau" name="btnBourreau">Valider</button>
+		<div id="bourreau">
+			<h2 align="center"><span id="numJoueurBourreau">Joueur 1</span> est le bourreau</h2>
+			<div align="center" id="saisieMotCache">
+				<b>Saisissez un mot à deviner : </b>
+				<input type="text" id="txtBourreau" name="txtBourreau" size="30"/>
+				<button type="button" id="btnBourreau" name="btnBourreau">Valider</button>
+			</div>
+			<div align="center" id="afficheMotCache">
+			</div>
 		</div>
-		<div align="center" id="afficheMotCache"></div>
 		<div id="victime">
 			<h2 align="center"><span id="numJoueurVictime">Joueur 2</span> est la victime</h2>
-			<div align="center" id="afficheNombreTentatives"></div>
+			<div align="center" id="afficheNombreTentatives">
+			</div>
 			<div align="center" id="lettreSaisie">
 				<b>Saisissez une lettre : </b>
 				<input type="text" id="txtVictime" name="txtVvictime" size="4"/>
 				<button type="button" id="btnVictime" name="btnVictime">Valider</button>
 			</div>
-			<div align="center" id="zoneAffichage"></div>
+			<div align="center" id="zoneAffichage">
+			</div>
 			<div align="center">
 				<!-- <button type="button" id="btnRejouer" name="btnRejouer">Rejouer ?</button> -->
 			</div>

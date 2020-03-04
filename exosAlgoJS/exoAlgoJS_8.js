@@ -1,11 +1,10 @@
-var gagne = false;
 var nbEssais = 0;
 var nbBonnesLettres = 0;
 var motEtoile = "";
 var nbTentatives = 10;
 var lettreSaisie = "";
 var nbBonnesLettres = 0;
-motCache = "";
+var motCache = "";
 
 var txtBourreau = document.getElementById("txtBourreau");
 var btnBourreau = document.getElementById("btnBourreau");
@@ -18,14 +17,14 @@ var txtVictime = document.getElementById("txtVictime");
 var btnVictime = document.getElementById("btnVictime");
 var victime = document.getElementById("victime");
 var afficheNombreTentatives = document.getElementById("afficheNombreTentatives");
+var divLettreSaisie = document.getElementById("lettreSaisie");
 
 btnBourreau.addEventListener("click", go);
 btnVictime.addEventListener("click", traitementVictime);
 
 victime.style.visibility = "hidden";
-draw();
 
-function go(event) {
+function go() {
 	motCache = txtBourreau.value;
 	var estUnMot = testMot(motCache);
 	console.log(testMot(motCache));
@@ -45,14 +44,13 @@ function go(event) {
 	}
 }
 
-function traitementVictime(event) {
+function traitementVictime() {
 	lettreSaisie = txtVictime.value;
 	if(lettreSaisie.length > 1 || lettreSaisie.length == 0) {
 		alert("Merci de saisir au moins une lettre et une seule lettre à la fois !!");
 	} else {
-		traitement();
 		txtVictime.value = "";
-		
+		traitement();
 	}
 }
 
@@ -81,24 +79,28 @@ function traitement() {
 		zoneAffichage.innerHTML = "Dommage... continuez quand même.";
 	}
 	if(!nbTentatives) {
-		draw(nbTentatives);
+		draw("defaite");
 		defaite();
 	}
 	if(motEtoile == motCache) {
+		draw("victoire");
 		victoire();
 	}
 }
 
 function victoire() {
+	divLettreSaisie.style.visibility = "hidden";
 	zoneAffichage.style.fontSize = "3em";
 	zoneAffichage.innerHTML = "Vous avez gagné en " + nbEssais + " essais !";
 }
 
 function defaite() {
+	divLettreSaisie.style.visibility = "hidden";
 	zoneAffichage.style.fontSize = "3em";
 	zoneAffichage.innerHTML = "Perdu ! le mot à trouver était " + motCache + "<br />";
 	zoneAffichage.innerHTML += "Vous avez trouvé " + nbBonnesLettres + " lettres";
 	zoneAffichage.innerHTML += "<br />Vous ferez mieux la prochaine fois !";
+	
 }
 
 function testMot(motCache) {
@@ -110,12 +112,11 @@ function initialisation() {
 	
 }
 
-function draw(nbTentatives) {
+function draw(etat) {
 	var canvas = document.getElementById("dessinPendu");
 	var ctx = canvas.getContext("2d");
-	// ctx.fillStyle = 'black';
 	ctx.fillStyle = "maroon";
-	switch(nbTentatives) {
+	switch(etat) {
 		case 9:
 			ctx.fillRect(200, 610, 300, 40);
 		break;
@@ -152,7 +153,7 @@ function draw(nbTentatives) {
 			ctx.fillRect(0, 0, 62, 5);
 			ctx.restore();
 		break;
-		case 0:
+		case "defaite":
 			ctx.save();
 			ctx.translate(755, 378);
 			ctx.rotate(Math.PI / 180 * 45);
@@ -209,7 +210,12 @@ function draw(nbTentatives) {
 			ctx.fillRect(0, 0, 62, 5);
 			ctx.restore();
 		break;
-
+		case "victoire":
+			ctx.fillStyle = "black";
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.font = "300px serif";
+			ctx.fillText("BRAVO!!", 30, 400);
+		break;
 	}
 	
 	canvas.addEventListener(
