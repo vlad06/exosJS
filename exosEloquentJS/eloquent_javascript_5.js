@@ -46,3 +46,10 @@ let countBsBis = (string) => {
 }
 
 console.log(countBsBis("ABCDEFGBBBBLMNOPB")); //6
+
+let listOfNumbers = [2, 3, 5, 7, 11];
+
+console.log(listOfNumbers);
+console.log(...listOfNumbers);
+console.log(Math.max(...listOfNumbers));
+console.log(typeof listOfNumbers);
