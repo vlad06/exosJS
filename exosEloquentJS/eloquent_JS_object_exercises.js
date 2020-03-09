@@ -58,13 +58,53 @@ function reverseArrayInPlace(array) {
 
 ////---------------------------------------------------------------------------
 let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null}}};
-function arrayToList(array) {
-    let myList;
-    for(let i = 1; i <= array.length; i++) {
+let arr = [1, 2, 3];
 
+function arrayToList(array) {
+    let myList = {};
+    for(let i = array.length - 1; i >= 0; i--) {
+			if(!myList.value) {
+				myList = { value: array[i], rest: null };
+			} else {
+				myList = { value: array[i], rest: myList };
+			}
     }
+		return myList;
 }
 
-console.log(list.rest.rest);
+function listToArray(list) {
+	let myArray = [];
+	myList = list;
+	let counter = 1;
+	while(myList.rest != null) {
+		myArray.unshift(myList.value);
+		myList = myList.rest;
+	}
+	return myList;
+}
+	
+	
+console.log(arrayToList(["A", "B", "C"]));
+console.log(list);
+// console.log(listToArray(list));
 
-//page 80
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
