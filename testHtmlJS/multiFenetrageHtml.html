@@ -1,0 +1,28 @@
+
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset = "utf-8">
+	<title>Javascript : Multifenêtrage</title>
+	<link href="css/jquery-ui.min.css" rel="stylesheet">
+</head>
+<body>
+	<p>
+		<strong>
+			En cliquant sur le bouton vous ouvrez une nouvelle fenêtre
+		</strong>
+	</p>
+	<button class="ui-button ui-corner-all ui-widget"
+		onclick="ouvreFenetreEnfant()"
+		id="enfant">Ouvrir la fenêtre
+	</button>
+	<br /><br />
+	Vous pouvez modifier la couleur du texte du bouton via la liste déroulante dans la fenêtre enfant.
+	<script>
+		function ouvreFenetreEnfant() {
+			window.open("enfant.html", "Test du Opener", "width=300, height=200");
+		}
+	</script>
+</body>
+</html>

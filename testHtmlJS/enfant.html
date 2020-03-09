@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Multifenêtrage : fenêtre enfant</title>
+</head>
+<body>
+	Modifier la couleur du bouton dans la fenêtre parent : 
+	<select onchange="changeOpener(this)">
+		<option value="black" />Noir
+		<option value="red" />Rouge
+		<option value="blue" />Bleu
+		<option value="green" />Vert
+		<option value="white" />Blanc
+	</select>
+	
+	<script>
+		function changeOpener(selectTag) {
+			var openerWindow = window.opener;
+			var button = openerWindow.document.getElementById("enfant");
+			button.style.color = selectTag.options[selectTag.selectedIndex].value;
+		}
+	</script>
+</body>
+</html>
