@@ -1,3 +1,5 @@
+
+//la fonction lignePanier sert à construire une nouvelle ligne dans le panier
 function lignePanier(code, qte, prix) {
 	this.codeArticle = code;
 	this.qteArticle = qte;
@@ -6,8 +8,8 @@ function lignePanier(code, qte, prix) {
 	this.getPrixLigne = function() { return this.prixArticle * this.qteArticle; } // () => return this.prixArticle * this.qteArticle
 	this.getCode = function() { return this.codeArticle; }
 }
-
-function Panier() {
+//la fonction Panier() sert à la gestion du panier, 
+function Panier() {	
 	this.liste = [];
 	this.ajouterArticle =	function(code, qte, prix) {
 		var index = this.getArticle(code);
@@ -22,7 +24,7 @@ function Panier() {
 		return total;
 	}
 	this.getArticle = function(code) {
-		for(var i = 0; i < this.liste.lenght; i++) {
+		for(var i = 0; i < this.liste.length; i++) {
 			if(code == this.liste[i].getCode()) {
 				return i;
 			}
@@ -38,12 +40,12 @@ function Panier() {
 }
 
 function ajouter() {
-			var code = parseInt(document.getElementById("id").value);
-			var qte = parseInt(document.getElementById("qte").value);
-			var prix = parseInt(document.getElementById("prix").value);
-			var monPanier = new Panier();
+			var code = parseInt(document.getElementById("id").value);			//on récupère l'id du produit à ajouter dans le panier
+			var qte = parseInt(document.getElementById("qte").value);			//puis la quantité
+			var prix = parseInt(document.getElementById("prix").value);		//et le prix
+			var monPanier = new Panier();		//on construit un nouveau Panier
 			
-			monPanier.ajouterArticle(code, qte, prix);
+			monPanier.ajouterArticle(code, qte, prix);		//auquel on ajoute les prix saisis dans les textbox
 			var tableau = document.getElementById("tableau");
 			var longueurTab = parseInt(document.getElementById("nbreLignes").innerHTML);
 			
@@ -73,9 +75,8 @@ function ajouter() {
 				colonne4.innerHTML += ligne.getPrixLigne();
 				var colonne5 = ligneTableau.insertCell(4);
 				colonne5.innerHTML +=
-					"<button class=\"btn btn-primary\"type=\"submit\"onclick=\"supprimer" +
-					"(this.parentNode.parentNode.cells[0].innerHTML)\"><span class=\"glyphicon" +
-					" glyphicon-remove\"></span>Retirer</button>";
+					"<button class=\"btn btn-primary\" type=\"submit\" onclick=\"supprimer(this.parentNode.parentNode.cells[0].innerHTML)\">" + 
+					"<span class=\"glyphicon glyphicon-remove\"></span>Retirer</button>";
 			}
 			document.getElementById("prixTotal").innerHTML = monPanier.getPrixPanier();
 			document.getElementById("nbreLignes").innerHTML = longueur;
@@ -112,8 +113,7 @@ function ajouter() {
 				colonne4.innerHTML += ligne.getPrixLigne();
 				var colonne5 = ligneTableau.insertCell(4);
 				colonne5.innerHTML += 
-					"<button class=\"btn btn-primary\"type=\"submit\"" +
-					"onclick=\"supprimer(this.parentNode.parentNode.cells[0].innerHTML)\">" + 
+					"<button class=\"btn btn-primary\" type=\"submit\" onclick=\"supprimer(this.parentNode.parentNode.cells[0].innerHTML)\">" + 
 					"<span class=\"glyphicon glyphicon-remove\"></span>Retirer</button>";
 			}
 			document.getElementById("prixTotal").innerHTML = monPanier.getPrixPanier();

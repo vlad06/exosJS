@@ -58,7 +58,7 @@ function reverseArrayInPlace(array) {
 
 ////---------------------------------------------------------------------------
 let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null}}};
-let arr = [1, 2, 3];
+let arr = [1, 2, 3, 4, 5, 6, 7];
 
 function arrayToList(array) {
     let myList = {};
@@ -72,21 +72,43 @@ function arrayToList(array) {
 		return myList;
 }
 
+// function listToArray(list) {
+	// let myArray = [];
+	// myList = list;
+	// while(true) {
+		// if(myList) {
+			// myArray.push(myList.value);
+		// } else {
+			// return -1;
+		// }
+		// if(myList.rest == null) {
+			// break;
+		// }
+		// myList = myList.rest;
+	// }
+	// return myArray;
+// }
+
 function listToArray(list) {
 	let myArray = [];
-	myList = list;
-	let counter = 1;
-	while(myList.rest != null) {
-		myArray.unshift(myList.value);
-		myList = myList.rest;
+	for(let node = list; node; node = node.rest) {
+		myArray.push(node.value);
 	}
-	return myList;
+	return myArray;
 }
 	
 	
 console.log(arrayToList(["A", "B", "C"]));
 console.log(list);
-// console.log(listToArray(list));
+// let secondLevelList = list.rest;
+// console.log(secondLevelList);
+// let thirdLevelList = secondLevelList.rest;
+// console.log(thirdLevelList);
+let newList = arrayToList(arr);
+console.log(arrayToList(arr));
+console.log(listToArray(list));
+// console.log(listToArray(newList));
+
 
 
 

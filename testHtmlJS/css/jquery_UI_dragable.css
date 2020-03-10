@@ -1,0 +1,82 @@
+/* DEFAULT */
+a:focus, button:focus, input:focus {
+	outline: none;
+}
+a {
+	outline:none;
+}
+button::-moz-focus-inner {
+	border:0;
+}
+input::-moz-focus-inner {
+	border:0;
+}
+acronym {
+	cursor:default;
+}
+img {
+	border:0;
+}
+#parking {
+ background: #BABFC9;
+ border: 4px dashed #FFCC00;
+ height: 300px;
+ position: relative;
+ overflow: hidden;
+}
+.voiture {
+ position: absolute;
+ width: 80px;
+ height: 160px;
+ background: #555;
+}
+.voiture.horizontale {
+ width: 160px;
+ height: 80px;
+ /*-moz-transform: rotate(-90deg);
+ -webkit-transform: rotate(-90deg);*/
+}
+#voiture_bleue {
+ background: #66CCFF;
+ left: 343px;
+ top: 108px;
+}
+#voiture_rouge {
+ background: #FF3300;
+ left: 264px;
+ top: 8px;
+}
+.personnage {
+ position: absolute;
+ width: 25px;
+ height: 50px;
+ background: #555;
+}
+.personnage .nom {
+ position: absolute;
+ bottom: -20px;
+ left: -28px;
+ width: 80px;
+ text-align: center;
+ font: 8pt Verdana, Arial, Helvetica, sans-serif;
+}
+#boby {
+ width: 30px;
+ height: 30px;
+ background: #FFFF00;
+ -moz-border-radius: 30px;
+ border-radius: 30px;
+ top: 10px;
+ left: 12px;
+}
+#boby .nom {
+	left: -25px;
+}
+#jeanne {
+ top: 100px;
+ left: 14px;
+ height: 28px;
+  background: #FF77BB;
+ -moz-border-radius: 30px 0 30px 0;
+ border-radius: 30px 0 30px 0;
+}
