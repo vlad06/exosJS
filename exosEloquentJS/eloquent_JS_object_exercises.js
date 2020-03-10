@@ -96,6 +96,11 @@ function listToArray(list) {
 	}
 	return myArray;
 }
+
+function prepend(element, list) {
+    let myList = list;
+    
+}
 	
 	
 console.log(arrayToList(["A", "B", "C"]));
