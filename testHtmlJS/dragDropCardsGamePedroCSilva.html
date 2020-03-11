@@ -2,28 +2,27 @@
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
-	<title>jQuery UI : draggable</title>
-
+	<title>jQuery UI : Drag Drop Cards Game by PedroCSilva (codepen.io)</title>
 </head>
 <body>
-	<div id="parking">
-		<div id="voiture_bleue" class="voiture">
+	<div id="content">
+		<div id="cardPile">
 		</div>
-		<div id="voiture_rouge"	class="voiture horizontale">
+		<div id="cardSlots">
 		</div>
-		<div id="boby" class="personnage">
-			<span class="nom">Boby</span>
-		</div>
-		<div id="jeanne" class="personnage">
-			<span class="nom">Jeanne</span>
+		<div id="successMessage">
+			<h2>You did it!</h2>
+			<button onclick="init()">
+				Play Again!
+			</button>
 		</div>
 	</div>
 </body>
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="css/jquery_UI_dragable.css" />
+<link rel="stylesheet" type="text/css" href="css/cardGamePCS.css" />
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
+<script src="js/cardGamePCS.js"></script>
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
-<script src="js/jquery_UI_dragable.js"></script>
 </html>

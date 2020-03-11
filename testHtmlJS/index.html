@@ -21,9 +21,15 @@
 </body>
 <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="css/jquery_UI_dragable.css" />
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-<!-- <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> -->
-<script src="js/jquery_UI_dragable.js"></script>
+<!-- <script src="js/jquery-3.4.1.min.js"></script> -->
+<!-- <script src="js/jquery-ui.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<!-- <script src="js/jquery_UI_dragable.js"></script> -->
+<script>
+	$(document).ready(function($) {
+		$(".voiture").draggable({containment: "parent"});
+		$(".personnage").draggable({containment: "parent"});
+	});
+</script>
 </html>
