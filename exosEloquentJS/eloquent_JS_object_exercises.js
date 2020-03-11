@@ -98,8 +98,8 @@ function listToArray(list) {
 }
 
 function prepend(element, list) {
-    let myList = list;
-    
+    let myList = {value: element, rest: list};
+    return myList;
 }
 	
 	
