@@ -168,11 +168,11 @@ function draw() { //fonction principale rappelée en boucle avec requestAnimatio
 	//déplacement du paddle avec les touches du clavier
 	if(rightPressed) {
 		paddleX += 7; //7
-		if(paddleX + paddleWidth > canvas.width) {
-			paddleX = canvas.width - paddleWidth;
+		if(paddleX + paddleWidth > canvas.width) {	//si le paddle touche le bord droit
+			paddleX = canvas.width - paddleWidth;			//
 		}
 	}
-	else if(leftPressed) {
+	else if(leftPressed) {												//si le paddle touche le bord gauche
 		paddleX -= 7; //7
 		if(paddleX < 0) {
 			paddleX = 0;

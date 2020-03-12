@@ -1,0 +1,26 @@
+
+#gameField {
+	background: #BABFC9;
+	border: 2px solid black;
+	height: 400px;
+	position: relative;
+	overflow: hidden;
+}
+
+.missile {
+	position: absolute;
+	background: blue;
+	width: 10px;
+	height: 10px;
+	top: 20px;
+	left: 70px;
+}
+
+#thePlayer{
+	position: absolute;
+	top: 150px;
+	left: 10px;
+	width: 80px;
+	height: 50px;
+	background: red;
+}
