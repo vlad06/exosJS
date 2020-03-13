@@ -145,6 +145,8 @@ function recurseNth(list, number) {
 console.log(arrayToList(["A", "B", "C"]));
 console.log(list);
 let newList = arrayToList(arr);
+console.log(arr);
+console.log(newList);
 console.log(arrayToList(arr));
 console.log(listToArray(list));
 console.log(listToArray(newList));
@@ -159,7 +161,7 @@ console.log(prepend(10, prepend(20, null)));
 //----------------------------------------------------------------------------------
 
 function deepEqual(firstValue, secondValue) {
-	if(firstValue == secondValue) {
+	if(firstValue === secondValue) {
 		return true;
 	}
 	if(firstValue == null || typeof firstValue != "object" || secondValue == null || typeof secondValue != "object") {
@@ -194,9 +196,12 @@ function deepEqual(firstValue, secondValue) {
 // }
 	console.log(deepEqual(arr, arr));
 	console.log(Object.keys(newList));
+		console.log("------------------------");
 	for(let key of Object.keys(newList)) {
-		console.log(newList[key]);
+		console.log("key : " + key);
+		console.log("newList[key] : " + newList[key]);
 	}
+		console.log("------------------------");
 	console.log(deepEqual({ value: 1, rest: { value: 2, rest: { value: 3, rest: null}}}, list));
 	console.log(deepEqual(6,"6"));
 	console.log(deepEqual(list2, list2));

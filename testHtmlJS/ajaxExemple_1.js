@@ -9,6 +9,7 @@ function loadDoc() {
 			document.getElementById("zoneNotif").innerHTML = this.responseText;
 		}
 	};
-	xhr.open("GET", "infos.txt", true);
+	// xhr.open("GET", "js/infos.txt", true);
+	xhr.open("GET", "gestionPanier.html", true);
 	xhr.send();
 }
