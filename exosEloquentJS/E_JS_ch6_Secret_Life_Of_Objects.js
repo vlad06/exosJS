@@ -151,6 +151,8 @@ console.log({x: 1}.hasOwnProperty("toString")); // false
 
 // POLYMORPHISM
 
+// let blackRabbit = new Rabbit("black");
+
 Rabbit.prototype.toString = function() {
     return `a ${this.type} rabbit`;
 };
@@ -185,6 +187,42 @@ let okIterator = "OK"[Symbol.iterator]();
 console.log(okIterator.next());                 // {value: "O", done: false}
 console.log(okIterator.next());                 // {value: "K", done: false}
 console.log(okIterator.next());                 // {value: undefined, done: true}
+
+// GETTERS, SETTERS, AND STATICS    
+
+let varyingSize = {
+    get size() {
+        return Math.floor(Math.random() * 100);
+    }
+};
+
+console.log(varyingSize.size);
+console.log(varyingSize.size);
+
+class Temperature {
+    constructor(celsius) {
+        this.celsius = celsius;
+    }
+    get fahrenheit() {                          // retourne en fahrenheit une valeur de température en celsius
+        return this.celsius * 1.8 + 32;
+    }
+    set fahrenheit(value) {                     // convertit en celsius une valeur saisie en fahrenheit
+        this.celsius = (value - 32) / 1.8;
+    }
+    static fromFahrenheit(value) {
+        return new Temperature((value - 32) / 1.8);
+    }
+}
+
+let temp = new Temperature(22);
+console.log(temp);                      // Temperature {celsius: 22}
+console.log(temp.fahrenheit);           // 71.6
+temp.fahrenheit = 86;
+console.log(temp.fahrenheit);           // 86
+console.log(temp);                      // Temperature {celsius: 30}
+console.log(temp.celsius);              // 30
+let tempFromFahrenheit = Temperature.fromFahrenheit(134);       // appel de la méthode static fromFahrenheit pour créer une nouvelle température
+console.log(tempFromFahrenheit);        //56.666
 
 // Let's implement an iterable data structure. We'll build a matrix class, acting as a two-dimensional array.
 console.log("=====================MATRIX DATA STRUCTURE========================");
@@ -243,13 +281,44 @@ for(let {x, y, value} of matrix) {
     console.log(x, y, value);
 }
 
-// GETTERS, SETTERS, AND STATICS    page 123
 
-let varyingSize = {
-    get size() {
-        return Math.floor(Math.random() * 100);
+// INHERITANCE
+// JavaScript's prototype system makes it possible to create a new class, much like
+// the old class, but with new definitions for some of its properties.
+// In object-oriented programming terms, this is called inheritance. The new
+// class inherits properties and behavior from the old class.
+
+// The use of the word extends indicates that this calss shouldn't be directly based on 
+// the default Object prototype but on some other class. This is called the superclass.
+// The derived class is the subclass
+class SymmetricMatrix extends Matrix {
+    constructor(size, element = (x, y) => undefined) {
+        super(size, size, (x, y) => {
+            if(x < y) {
+                return element(y, x);
+            } else {
+                return element(x, y);
+            }
+        });
     }
-};
 
-console.log(varyingSize.size);
-console.log(varyingSize.size);
+    set(x, y, value) {
+        super.set(x, y, value);         // Inside class methods super provide a way to 
+        if(x != y) {                    // call methods as they were defined in the superclass
+            super.set(y, x, value);
+        }
+    }
+}
+
+let myMatrix = new SymmetricMatrix(5, (x, y) => `${x}, ${y}`);
+console.log(myMatrix.get(2, 3));          // 3, 2
+
+// THE INSTANCEOF OPERATOR
+// It is occasionally useful to know whether an object was derived from a specific class.
+// For this, JavaScript provides a binary operator called instanceof.
+// The operator will see through inherited types, so a SymmetricMatrix is an instance of Matrix
+
+console.log(new SymmetricMatrix(2) instanceof SymmetricMatrix);         // true
+console.log(new SymmetricMatrix(2) instanceof Matrix);                  // true
+console.log(new Matrix(2, 2) instanceof SymmetricMatrix);               // false
+console.log([1] instanceof Array);                                      // true

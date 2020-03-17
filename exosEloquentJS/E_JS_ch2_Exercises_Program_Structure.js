@@ -1,3 +1,44 @@
+/*
+LOOPING A TRIANGLE
+Write a loop that makes seven calls to console.log to output the following triangle:
+#
+##
+###
+####
+#####
+######
+#######
+*/
+
+for(let line = "#"; line.length < 8; line += "#") {
+    console.log(line);
+}
+
+// FIZZBUZZ
+
+// FIRST SOLUTION (standard)
+for(let i = 1; i <= 100; i++) {
+    if(i % 3 == 0 && i % 5 == 0) {
+        console.log("FizzBuzz\n");
+    } else if(i % 3 == 0) {
+        console.log("Fizz\n");
+    } else if(i % 5 == 0) {
+        console.log("Buzz\n");
+    } else {
+        console.log(i+"\n");
+    }
+}
+
+// SECOND SOLUTION (...)
+for (let n = 1; n <= 100; n++) {
+    let output = "";
+    if (n % 3 == 0) output += "Fizz";
+    if (n % 5 == 0) output += "Buzz";
+    console.log(output || n);
+}
+
+// CHESSBOARD
+
 console.log("SOLUTION 1 : ");
 console.log("-----------------------");
 let size = 8;

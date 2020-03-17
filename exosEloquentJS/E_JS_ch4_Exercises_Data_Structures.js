@@ -1,4 +1,6 @@
 
+// THE SUM OF A RANGE
+
 function range(start, end, step = 1) {
     let table = new Array();
     if(step < 0) {
@@ -35,6 +37,8 @@ let theSum = (table) => {
 // console.log(theSum(range(5, 2, -1)));
 
 ////----------------------------------------------------------------------------
+// REVERSING AN ARRAY
+
 function reverseArray(array) {
     let myArray = [];
     for(let i = array.length - 1; i >= 0; i--) {
@@ -57,6 +61,8 @@ function reverseArrayInPlace(array) {
 // console.log(reverseArrayInPlace(["A", "B", "C", "D", "E", "F"]));
 
 ////---------------------------------------------------------------------------
+// A LIST
+
 let list = { value: 1, rest: { value: 2, rest: { value: 3, rest: null}}};
 let arr = [1, 2, 3, 4, 5, 6, 7];
 
@@ -139,9 +145,6 @@ function recurseNth(list, number) {
 	} else return recurseNth(list.rest, number - 1);
 }
 
-	
-
-	
 console.log(arrayToList(["A", "B", "C"]));
 console.log(list);
 let newList = arrayToList(arr);
@@ -159,6 +162,7 @@ console.log(nth(newList, 6));
 console.log(recurseNth(newList, 6));
 console.log(prepend(10, prepend(20, null)));
 //----------------------------------------------------------------------------------
+// DEEP COMPARISON
 
 function deepEqual(firstValue, secondValue) {
 	if(firstValue === secondValue) {
