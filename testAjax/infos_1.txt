@@ -1,0 +1,4 @@
+<div id="ajaxText"> Coucou, je suis le texte dans un div chargé via ajax dans le premier fichier</div>
+<button type="button" id="theButton">
+	appel fichier texte 2
+</button>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <div id="demo">
+    <h2>The XMLHttpRequest Object</h2>
+    <button type="button" onclick="loadDoc()">Change Content</button>
+  </div>
+
+  <script>
+    function loadDoc() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          let rh = this.getAllResponseHeaders().split("\n");
+          let showRh = "<b>Here is the list of all response headers : </b><br />";
+          for(let i = 0; i < rh.length; i++) {
+            showRh += rh[i] + "<br />";
+          }
+          document.getElementById("demo").innerHTML = showRh;
+        }
+      };
+      xhttp.open("GET", "ajax_info.txt", true);
+      xhttp.send();
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajax with xml</title>
+</head>
+<body>
+  <h2>The XMLHttpRequest Object</h2>
+  <button type="button" id="theButton">
+    Get my CD collection
+  </button>
+  <br /><br />
+  <table id="theTable"></table>
+</body>
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 5px;
+  }
+</style>
+<script>
+  document.getElementById("theButton").addEventListener("click", loadDoc);
+
+  function loadDoc() {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        buildTable(this);
+      }
+    };
+    xhr.open("GET", "cd_catalog.xml", true);
+    xhr.send();
+  }
+
+  function buildTable(xhr) {
+    let xmlDoc = xhr.responseXML;
+    let table = "<tr><th>Artist</th><th>Title</th><th>Year</th></tr>";
+    var xmlCdTag = xmlDoc.getElementsByTagName("CD");
+    for (let i = 0; i < xmlCdTag.length; i++) {
+      table += "<tr><td>" + xmlCdTag[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+              "</td><td>" + xmlCdTag[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+              "</td><td>" + xmlCdTag[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue +
+              "</td></tr>";
+    }
+    document.getElementById("theTable").innerHTML = table;
+  }
+</script>
+</html>
