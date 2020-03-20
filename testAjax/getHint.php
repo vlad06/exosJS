@@ -41,7 +41,7 @@ if ($q !== "") {
   $len = strlen($q);
 
   foreach($a as $name) {
-    if (strisstr($q, substr($name, 0, $len))){
+    if (stristr($q, substr($name, 0, $len))){
       if ($hint === "") {
         $hint = $name;
       } else {
