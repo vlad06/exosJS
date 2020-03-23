@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajax et les formulaires</title>
+</head>
+<body>
+
+  <div id="errorMessage"></div>
+
+  <div id="ajaxMessage"></div>
+
+  <form id="ajax-contact" method="get" onsubmit="return testFormField()" action="">
+    <fieldset>
+      <legend>Vos informations</legend>
+      <label for="youAre">Vous êtes:</label>
+      <input type="radio" id="woman" name="gender" required>Une femme
+      <input type="radio" id="man" name="gender">Un homme
+      <input type="radio" id="other" name="gender">Autre chose<br />
+
+      <label for="firstName">Prénom:</label>
+      <input type="text" id="firstName" name="firstName" size="40" required ><br />
+
+      <label for="lastName">Nom:</label>
+      <input type="text" id="lastName" name="lastName" size="40" required ><br />
+
+      <label for="mail">E-mail:</label>
+      <input type="email" id="mail" name="mail" size="40" required><br />
+
+      <input type="checkbox" id="newsletter" name="newsletter" value="newsOk">
+      Accepter notre newsletter.<br />
+      <input type="checkbox" id="remoteAccess" name="remoteAccess" value="remoteOk">
+      Accepter notre backdoor.<br />
+      <input type="checkbox" id="publicity" name="publicity" value="pubOk">
+      Accepter des offres promotionelles de nos 153942 partenaires.<br />
+
+      <button type="submit" id="btnValidateForm">Valider</button>
+
+    </fieldset>
+  </form> 
+  
+</body>
+<link rel="stylesheet" href="ajaxExemple_5_formulaires.css">
+<script src="ajaxExemple_5_formulaires.js"></script>
+</html>

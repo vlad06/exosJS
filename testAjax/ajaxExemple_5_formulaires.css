@@ -1,0 +1,46 @@
+
+legend {
+  background-color: #000;
+  color: #FFF;
+  padding: 3px 6px;
+}
+
+.output {
+  font: 3em 'Fira Sans', sans-serif;
+}
+
+input {
+  margin: 0.6rem;
+}
+
+
+fieldset {
+  margin-left: 400px;
+  margin-right: auto;
+  width: 500px;
+}
+
+#errorMessage {
+  margin-top: 2em;
+  margin-left: 1.5em;
+  float: left;
+  font-size: 1.5em;
+  color: red;
+}
+
+#ajaxMessage {
+  float: right;
+  margin-top: 1em;
+  margin-right: 750px;
+}
+button {
+  margin-top: 1em;
+}
+
+label {
+  margin-top: 0.6rem;
+  display: block;
+  width: 5em;
+  float: left;
+
+}

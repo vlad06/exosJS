@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XHR log time</title>
+</head>
+
+<body>
+  <p id="writeData" class="data">Off-Line</p>
+  <p id="lastStamp">No Data yet</p>
+</body>
+
+<script>
+  const fullData = document.getElementById("writeData");
+  const lastData = document.getElementById("lastStamp");
+
+  function fetchData() {
+    console.log("Fetching updated data.");
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "time-log.txt", true);
+    xhr.onload = function() {
+      updateDisplay(xhr.response);
+    }
+    xhr.send();
+  }
+
+  function updateDisplay(text) {
+    fullData.textContent = text;
+    let timeArray = text.split("\n");
+
+    if(timeArray[timeArray.length-1] === "") {
+      timeArray.pop();
+    }
+
+    lastData.textContent = timeArray[timeArray.length-1];
+  }
+
+  setInterval(fetchData, 5000);
+</script>
+
+</html>
