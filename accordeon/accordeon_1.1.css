@@ -1,0 +1,45 @@
+html {
+    font-size: 10px;
+}
+.accordeon {
+    background-color: rgb(0, 54, 3);
+    color: rgb(28, 255, 7);
+    cursor: pointer;
+    padding: 2rem;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    /* transition: 0s; */
+    font-family: "OCR A Std", monospace;
+    font-size: 2rem;
+}
+
+.accordeon:before{
+    content: "\1F311";
+    font-size: 1.3rem;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:before {
+    content: "\1F315";
+}
+
+.active, .accordeon:hover {
+    background-color: rgb(4, 116, 9);
+}
+
+.panel {
+    padding: 0 2rem;
+    background-color: rgb(99, 252, 244);
+    max-height: 0;
+    overflow: hidden;
+    /* transition: max-height 0.2s ease-out; */
+
+}
+
+p {
+    font-size: 2rem;
+}
