@@ -37,6 +37,7 @@
 
   function buildTable(xhr) {
     let xmlDoc = xhr.responseXML;
+    console.log(xmlDoc);
     let table = "<tr><th>Artist</th><th>Title</th><th>Year</th></tr>";
     var xmlCdTag = xmlDoc.getElementsByTagName("CD");
     for (let i = 0; i < xmlCdTag.length; i++) {
