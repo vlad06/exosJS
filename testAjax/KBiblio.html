@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Biblio K</title>
+        <meta charset="utf-8">
+        <!-- <link rel="stylesheet" href="biblio.css"> -->
+    </head>
+    <body>
+        <h1>Syntaxe de base : </h1>
+
+            <input type="button" id="sDoctype" class="btn" value="Doctype">
+                <p id="syntaxeP1" class="para"></p>
+            <input type="button" id="sEvent" class="btn" value="Event">
+                <p id="syntaxeP2" class="para"></p>
+            <input type="button" id="sAjax" class="btn" value="Ajax">
+                <p id="syntaxeP3" class="para"></p>
+
+
+        <h1>exemples : </h1>
+            <input type="button" id="exFormulaire" class="btn" value="formulaire">
+                <p id ="exempleP1"></p>
+            <input type="button" id="exAccordion" class="btn" value="Accordion">
+                <p id ="exempleP2"></p>
+
+
+
+
+
+        <script>
+
+            //Chercher les Elements et declare
+                        
+            //chercher id sDoctype
+                var ElDoctype = document.getElementById('sDoctype');
+            //chercher id sEvent
+                var ElEvent = document.getElementById('sEvent');
+            //chercher id sAjax
+                var ElAjax = document.getElementById('sAjax');
+            //chercher id exFormulaire
+                var ElForm = document.getElementById('exFormulaire');
+            //chercher id exAccordion
+                var ElAccord = document.getElementById('exAccordion');  
+
+                        //paragraphe
+            //chercher id syntaxeP1
+                var ElPara1 = document.getElementById('syntaxeP1'); 
+            //chercher id syntaxeP2
+                var ElPara2 = document.getElementById('syntaxeP2'); 
+            //chercher id syntaxeP3
+                var ElPara3 = document.getElementById('syntaxeP3'); 
+            //chercher id exempleP1
+                var ElPara4 = document.getElementById('exempleP1'); 
+            //chercher id exempleP2
+                var ElPara5 = document.getElementById('exempleP2'); 
+                
+
+
+            //syntaxe Ajax
+                // function loadDoc() 
+                // {
+                //     var xhttp = new XMLHttpRequest();
+                //     xhttp.onreadystatechange = function() 
+                //     {
+                //     if (this.readyState == 4 && this.status == 200) 
+                //     {
+                //         document.getElementById("syntaxeP1").innerHTML = this.responseText;
+                //     }
+                // };
+                //     xhttp.open("GET", "syntaxeDoctype.xml.txt", true);
+                //     xhttp.send();
+                // }
+
+
+            //class button
+            // var btn = document.getElementsByClassName('btn');
+            var btn = document.querySelectorAll(".btn"); 
+            //class para
+            var sPara = document.querySelectorAll(".para");
+                for(i = 0 ; i < btn.length ; i++)
+                {
+                    btn[i].addEventListener('click',function(event)
+                    {
+                            var xhttp = new XMLHttpRequest();
+                            xhttp.onreadystatechange = function() 
+                            {
+                            if (this.readyState == 4 && this.status == 200) 
+                                {
+                                    console.log(event.target.nextElementSibling);   // le prochain élément au même niveau que l'input dans le flux du DOM
+                                                                                    // dans ce cas là il s'agit du <p> qui suit le bouton appelant (event.target)
+                                    event.target.nextElementSibling.append(this.response);
+                                }
+                            };
+                            xhttp.open("GET", "squeletteHtml.txt", true);
+                            xhttp.send();
+                    });
+                }
+
+
+
+
+            
+
+        </script>
+    </body>
+</html>
+
+

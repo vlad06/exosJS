@@ -1,7 +1,7 @@
 
 let myAccordeon = document.querySelectorAll(".accordeon");
 myAccordeon.forEach((element) => {
-    element.addEventListener("click", process);
+    element.addEventListener("click", process);											// on applique un listener sur chacun des éléments ayant la class .accordeon
 })
 
 function process(event) {
@@ -11,6 +11,7 @@ function process(event) {
         theTarget = event.target.parentNode;                                        // on force l'élément appelant à être son parent
     }
     let panel = theTarget.nextElementSibling ;                                      // pour que la variable panel cible le panel et pas un enfant de l'img ou du span
+		
     theTarget.classList.toggle("active");                                           // on ajoute ou enlève .active à l'élément cliqué
 
     panel.style.display = (panel.style.display === "block") ? "none" : "block";     // Pour afficher ou cacher la div .panel
