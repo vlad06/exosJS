@@ -1,0 +1,45 @@
+html {
+    font-size: 10px;
+}
+
+td {
+    font-size: 3rem;
+    width: 100px;
+    height: 100px;
+    vertical-align: top;
+    text-align: right;
+}
+
+th {
+    font-size: 2rem;
+    width: 100px;
+    height: 25px;
+    background-color: rgb(129, 252, 104);
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+.grisaille {
+    background-color: grey;
+}
+
+.active {
+    background-color: rgb(16, 199, 255);
+}
+
+.dayHover {
+    cursor: pointer;
+    background-color: rgb(15, 78, 173);
+}
+
+#theMonth {
+    font-size: 5em;
+    text-align: center;
+}
