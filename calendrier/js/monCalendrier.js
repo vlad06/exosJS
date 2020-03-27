@@ -65,8 +65,8 @@ function buildBaseTable(myMonth, myYear) {
         headCell.appendChild(headCellText);                                       // on ajoute le TextNode à la cellule
         tableHeader.appendChild(headCell);                               // on ajoute la cellule à <thead>
     }
-    tableHeader.setAttribute("id", "tableHeader");                       // on ajoute un id au header
-    tableHeader.setAttribute("class", "weekDays");                       // on ajoute une classe au header
+    tableHeader.setAttribute("id", "tableHeader");                       // on ajoute un id au header       (pas encore utilisé)
+    tableHeader.setAttribute("class", "weekDays");                       // on ajoute une classe au header  (pas encore utilisé)
 
     table.appendChild(tableHeader);                                      // on ajoute <thead> à <table>
 
@@ -77,16 +77,16 @@ function buildBaseTable(myMonth, myYear) {
         let tableBodyRow = document.createElement("tr");                 // on construit 6 lignes pour la table
         
         for(let j = 0; j < 7; j++) {
-            let tableBodyCell = document.createElement("td");            // pour chaque ligne on construit 7 colonnes
-            tableBodyCell.setAttribute("class", "grisaille");
-            if((i * 7 + j) >= firstDayThisMonth && firstDay <= numberDayThisMonth) { // on affiche uniquement les jours correspondant au mois choisit
+            let tableBodyCell = document.createElement("td");                        // pour chaque ligne on construit 7 colonnes
+            tableBodyCell.setAttribute("class", "grisaille");                        // ajout d'une class pour griser toutes les cellules
+            if((i * 7 + j) >= firstDayThisMonth && firstDay <= numberDayThisMonth) { // on affiche uniquement les jours correspondant au mois choisi
                 let cellText = document.createTextNode(firstDay);
                 tableBodyCell.appendChild(cellText);
-                tableBodyCell.removeAttribute("class", "grisaille");
-                tableBodyCell.setAttribute("class", "active");
-                tableBodyCell.addEventListener("mouseover", onMouseOver);
-                tableBodyCell.addEventListener("mouseout", onMouseOut);
-                tableBodyCell.addEventListener("click", actionProcess);
+                tableBodyCell.removeAttribute("class", "grisaille");               // pour le cas des cellules appartenant au mois selectionné, on les dégrise
+                tableBodyCell.setAttribute("class", "active");                      // on leur ajoute une classe active
+                tableBodyCell.addEventListener("mouseover", onMouseOver);           // un listener quand on survole la cellule (uniquement pour toggle .dayhover)
+                tableBodyCell.addEventListener("mouseout", onMouseOut);             // un listener quand on sort de la cellule (uniquement pour toggle .dayhover)
+                tableBodyCell.addEventListener("click", actionProcess);             // un listener qui déclenchera qqch quand on click sur la cellule
                 firstDay++;
             }
             tableBodyRow.appendChild(tableBodyCell);
@@ -125,7 +125,7 @@ function actionProcess(event) {
     console.log(event.target.innerText);    // servira pour ouvrir un popup pour saisir des données sur la journée choisie
 }
 
-// function bissextile(annee) {
+// function bissextile(annee) {             // inutile pour l'instant
 //     return !(annee % 4) || !((annee % 100) && (annee % 400));
 // }
 
