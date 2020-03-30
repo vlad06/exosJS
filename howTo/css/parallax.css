@@ -1,0 +1,71 @@
+html {
+    overflow: hidden;
+    font-size: 10px;
+}
+
+body {
+    margin: 0;
+    font-size: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #ffffff;
+    height: 100vh;
+    perspective: 1px;
+    transform-style: preserve-3d;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.parallax-wrapper {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 20vh;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+}
+
+.parallax-wrapper::before {
+    content: "";
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-image: url("../img/littleBigPlanet_arrose.jpg");
+    /* filter: grayscale(100%); */
+    position: absolute;
+    z-index: -1;
+    transform: translateZ(-1px) scale(2);
+}
+.regular-wrapper {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 20vh;
+    background-image: url("../img/mangaDroid.jpg");
+    /* filter: grayscale(100%); */
+    z-index: 2;
+    position: relative;
+}
+
+.content {
+    margin: 0 auto;
+    padding: 50px;
+    width: 50%;
+    background: #aaa;
+    opacity: .7;
+}
+
+#myLine {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+h1 {
+    font-size: 6rem;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+h1+p {
+    font-size: 3rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    font-weight: bold;
+}
