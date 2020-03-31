@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Typewriter</h1>
+
+<button onclick="typeWriter()">Click me</button>
+<button onclick="typeWriter2()">No me!</button>
+
+<p id="demo"></p>
+<p id="demo2"></p>
+
+<style>
+    #demo {
+        width: 25%;
+        border: 1px solid black;
+    }
+    #demo2 {
+        font-size: 5em;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+<script>
+var i = 0;
+var j = 0;
+var txt = 'Lorem ipsum dolor sit amet consectetur adipisicing elit.' + 
+            'At, ipsa delectus! Corporis ullam debitis distinctio provident accusamus?' + 
+            'Iste quis recusandae ducimus, doloribus voluptatibus veniam in sint odit nostrum quod hic.';
+var txt2 = "IN 2050";
+var speed = 10;
+var speed2 = 100;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+function typeWriter2() {
+    if(j < txt2.length) {
+        document.getElementById("demo2").innerHTML += txt2.charAt(j);
+        j++;
+        setTimeout(typeWriter2, speed2);
+    }
+}
+</script>
+
+</body>
+</html>

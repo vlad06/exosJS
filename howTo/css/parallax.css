@@ -47,7 +47,7 @@ body {
 .content {
     margin: 0 auto;
     padding: 50px;
-    width: 50%;
+    width: 70%;
     background: #aaa;
     opacity: .7;
 }
@@ -61,11 +61,15 @@ body {
     color: black;
 }
 h1 {
-    font-size: 6rem;
-    background-color: rgba(255, 255, 255, 0.3);
+    font-size: 7rem;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    text-shadow: 3px 3px 6px black, 0 0 4em black, 0 0 1em black;
 }
 h1+p {
-    font-size: 3rem;
-    background-color: rgba(255, 255, 255, 0.3);
+    font-size: 3.5rem;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    text-shadow: 3px 3px 6px black, 0 0 4em black, 0 0 1em black;
     font-weight: bold;
 }
