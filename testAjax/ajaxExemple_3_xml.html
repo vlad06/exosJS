@@ -38,15 +38,17 @@
   function buildTable(xhr) {
     let xmlDoc = xhr.responseXML;
     console.log(xmlDoc);
-    let table = "<tr><th>Artist</th><th>Title</th><th>Year</th></tr>";
-    var xmlCdTag = xmlDoc.getElementsByTagName("CD");
-    for (let i = 0; i < xmlCdTag.length; i++) {
-      table += "<tr><td>" + xmlCdTag[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
-              "</td><td>" + xmlCdTag[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
-              "</td><td>" + xmlCdTag[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue +
-              "</td></tr>";
-    }
-    document.getElementById("theTable").innerHTML = table;
+    // let table = "<tr><th>Artist</th><th>Title</th><th>Year</th></tr>";
+    // var xmlCdTag = xmlDoc.getElementsByTagName("CD");
+    // for (let i = 0; i < xmlCdTag.length; i++) {
+    //   table += "<tr><td>" + xmlCdTag[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+    //           "</td><td>" + xmlCdTag[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    //           "</td><td>" + xmlCdTag[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue +
+    //           "</td></tr>";
+    // }
+    // document.getElementById("theTable").innerHTML = table;
+    console.log(xmlDoc.getElementsByTagName("CATALOG"));
+    document.getElementById("theTable").innerHTML = xmlDoc.getElementsByTagName("CATALOG")[0].outerHTML;
   }
 </script>
 </html>
