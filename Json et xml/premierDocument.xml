@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>    <!-- cette ligne est le "prologue" -->
+<!-- Tout ce qui suit est le "corps" -->
+<repertoire>
+    <personne>Robert</personne>
+    <personne>John</personne>
+</repertoire>
