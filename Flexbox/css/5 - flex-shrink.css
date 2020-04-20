@@ -1,0 +1,73 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+div {
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 2rem;
+}
+
+
+.wrapper{
+  margin: 0 auto;
+  max-width: 1000px;
+  border: 10px solid goldenrod;
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+} 
+.wrapper div {
+  flex-grow: 1;
+}
+.violet {
+  background: violet;
+  flex-shrink: 10;
+}
+.blue {
+  background: blue;
+  flex-shrink: 9;
+}
+.green {
+  background: green;
+  flex-shrink: 8;
+}
+.yellow {
+  background: yellow;
+  flex-shrink: 7;
+}
+.orange {
+  background: orange;
+  flex-shrink: 6;
+}
+.red {
+  background: red;
+  flex-shrink: 5;
+}
+.pink {
+  background: pink;
+  flex-shrink: 4;
+}
+.grey {
+  background: grey;
+  flex-shrink: 3;
+}
+.lightblue {
+  background: lightblue;
+  flex-shrink: 2;
+}
+.lightgreen {
+  background: lightgreen;
+  flex-shrink: 1;
+}

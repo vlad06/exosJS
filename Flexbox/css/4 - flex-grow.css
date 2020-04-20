@@ -1,0 +1,85 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+div {
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 2rem;
+}
+
+
+.wrapper{
+  margin: 0 auto;
+  /* max-width: 800px; */
+  border: 10px solid goldenrod;
+  display: flex;
+} 
+.child1 {
+  flex-grow: 1;
+}
+.child2 {
+  flex-grow: 1;
+}
+.child3 {
+  flex-grow: 7;
+}
+.violet {
+  background: violet;
+}
+.blue {
+  background: blue;
+}
+.green {
+  background: green;
+}
+.yellow {
+  background: yellow;
+}
+.orange {
+  background: orange;
+}
+.red {
+  background: red;
+}
+.pink {
+  background: pink;
+}
+.grey {
+  background: grey;
+}
+.lightblue {
+  background: lightblue;
+}
+.lightgreen {
+  background: lightgreen;
+}
+.goldenrod {
+  background: goldenrod;
+}
+.darkorange {
+  background: darkorange;
+}
+.darkred {
+  background: darkred;
+}
+.darkblue {
+  background: darkblue;
+}
+.darkgreen {
+  background: darkgreen;
+}
+.brown {
+  background: brown;
+}
