@@ -22,11 +22,10 @@ div {
 
 .wrapper{
   margin: 0 auto;
-  max-width: 1000px;
   border: 10px solid goldenrod;
   display: flex;
   flex-wrap: wrap;
-  /* flex-direction: column; */
+  flex-direction: column;
 } 
 .wrapper div {
   flex-grow: 1;
@@ -41,7 +40,7 @@ div {
 }
 .green {
   background: green;
-  flex-shrink: 8;
+  flex-shrink: 0;
 }
 .yellow {
   background: yellow;

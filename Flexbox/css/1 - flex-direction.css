@@ -23,10 +23,8 @@ div {
 .wrapper {
   margin: 0 auto;
   max-width: 1000px;
-  width: 100%;
   border: 5px solid goldenrod;
   display: flex;
-  justify-items: stretch;
 }
 .sport-wrap {
   flex-grow: 2;

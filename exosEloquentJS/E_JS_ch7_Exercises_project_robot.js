@@ -158,7 +158,7 @@ function compareRobots(firstRobot, secondRobot) {
 		secondResult += runRobot(randomState, secondRobot, []);
 	}
 	return {robotOne: firstResult / 100,
-					robotTwo:	secondResult / 100};
+			robotTwo:	secondResult / 100};
 }
 
 console.log(compareRobots(randomRobot, routeRobot));
